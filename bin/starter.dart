@@ -1,20 +1,21 @@
-import 'package:starter/stack.dart';
+import '../lib/linked_list.dart';
 
 void main(List<String> arguments) {
-  final stack = Stack<int>();
-  stack.push(1);
-  stack.push(2);
-  stack.push(3);
-  stack.push(4);
-  print(stack);
+  final list = LinkedList<int>();
+  list.push(3);
+  list.push(2);
+  list.push(1);
+  print('Original list: $list');
+  print("Printing in reverse:");
+  printListInReverse(list);
+}
 
-  final element = stack.pop();
-  print('Popped: $element');
+void printNodeRecursively<T>(Node<T>? node) {
+  if (node == null) return;
+  printNodeRecursively(node.next);
+  print(node.value);
+}
 
-  const list = ['S', 'M', 'O', 'K', 'E'];
-
-  final smokeStack = Stack.of(list);
-  print(smokeStack);
-  smokeStack.pop();
-  print(smokeStack);
+void printListInReverse<E>(LinkedList<E> list) {
+  printNodeRecursively(list.head);
 }
