@@ -1,21 +1,13 @@
-import '../lib/linked_list.dart';
+import 'package:starter/linked_list.dart';
 
 void main(List<String> arguments) {
   final list = LinkedList<int>();
+  list.push(5);
+  list.push(4);
   list.push(3);
   list.push(2);
   list.push(1);
-  print('Original list: $list');
-  print("Printing in reverse:");
-  printListInReverse(list);
-}
-
-void printNodeRecursively<T>(Node<T>? node) {
-  if (node == null) return;
-  printNodeRecursively(node.next);
-  print(node.value);
-}
-
-void printListInReverse<E>(LinkedList<E> list) {
-  printNodeRecursively(list.head);
+  // print('Before reverse : $list');
+  final mid = getMiddle(list);
+  print('mid : ${mid?.value}');
 }

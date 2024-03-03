@@ -129,3 +129,65 @@ class _LinkedListIterator<E> implements Iterator<E> {
     return _currentNode != null;
   }
 }
+
+void printNodeRecursively<T>(Node<T>? node) {
+  if (node == null) return;
+  printNodeRecursively(node.next);
+  print(node.value);
+}
+
+void printListInReverse<E>(LinkedList<E> list) {
+  printNodeRecursively(list.head);
+}
+
+Node<E>? getMiddle<E>(LinkedList<E> list) {
+  var slow = list.head;
+  var fast = list.head;
+  while (fast?.next != null) {
+    fast = fast?.next?.next;
+    slow = slow?.next;
+  }
+  return slow;
+}
+
+extension ReversibleLinkedList<E> on LinkedList<E> {
+  // void reverse() {
+  //   final tempList = LinkedList<E>();
+  //   for (var element in this) {
+  //     tempList.push(element);
+  //   }
+  //   head = tempList.head;
+  // }
+
+  void reverse() {
+    tail = head;
+    var previous = head;
+    var current = head?.next;
+    previous?.next = null;
+    while (current != null) {
+      final next = current.next;
+      current.next = previous;
+      previous = current;
+      current = next;
+    }
+    head = previous;
+  }
+
+  void removeAll(E value) {
+    while (head != null && head!.value == value) {
+      head = head!.next;
+    }
+    var previous = head;
+    var current = head?.next;
+    while (current != null) {
+      if (current.value == value) {
+        previous?.next == current.next;
+        current = previous?.next;
+        continue;
+      }
+      previous = current;
+      current = current.next;
+      tail = previous;
+    }
+  }
+}
