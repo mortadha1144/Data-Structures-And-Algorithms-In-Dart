@@ -1,4 +1,4 @@
-import 'package:starter/linked_list.dart';
+import '../lib/linked_list.dart';
 
 void main(List<String> arguments) {
   final list = LinkedList<int>();
