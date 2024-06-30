@@ -1,13 +1,21 @@
-import '../lib/linked_list.dart';
 
-void main(List<String> arguments) {
-  final list = LinkedList<int>();
-  list.push(5);
-  list.push(4);
-  list.push(3);
-  list.push(2);
-  list.push(1);
-  // print('Before reverse : $list');
-  final mid = getMiddle(list);
-  print('mid : ${mid?.value}');
+import 'package:starter/stack.dart';
+
+void main(List<String> args) {
+  final stack = Stack<int>();
+  stack.push(1);
+  stack.push(2);
+  stack.push(3);
+  stack.push(4);
+  print(stack);
+
+  final element = stack.pop();
+  print('Popped: $element');
+
+  const list = ['S', 'M', 'O', 'K', 'E'];
+  printListReversed(List list1) {
+    print(list1.reversed);
+  }
+
+  printListReversed(list);
 }
